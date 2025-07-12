@@ -1,0 +1,57 @@
+id: quiz_useeffect_purpose
+learningObjectives:
+  - Evaluate understanding of the useEffect hook's purpose.
+hints:
+  - Think about lifecycle methods and what useEffect can replace.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Quiz time again! What is the primary purpose of the useEffect hook?
+    - actionId: quiz_message
+      name: quiz
+      params:
+        person: lucca
+        options:
+          - To handle side effects in functional components.
+          - To replace state variables.
+          - To make components render faster.
+trigger:
+  type: chat_form_submitted
+  flowNode:
+    switch:
+      key: ${formSubmission}
+      cases:
+        A:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: Absolutely spot on! useEffect is designed to handle side effects in a
+                      tidy, functional way. Well done!
+            - actionId: finish_step
+        B:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: Not quite. useEffect is more about side effects than managing state
+                      directly. Have another go!
+            - actionId: replay_action
+              params:
+                actionName: quiz
+        C:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: Nice try, but not the correct reason. useEffect is about managing side
+                      effects, not rendering speed. Let's try once more!
+            - actionId: replay_action
+              params:
+                actionName: quiz
