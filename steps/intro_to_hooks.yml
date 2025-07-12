@@ -1,0 +1,38 @@
+id: intro_to_hooks
+learningObjectives:
+  - Understand what React hooks are and their purpose.
+hints:
+  - Learn more about hooks by visiting [React
+    Hooks](https://reactjs.org/docs/hooks-intro.html).
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Welcome to the world of React Hooks, my eager learner! Hooks were
+              introduced in React 16.8, and their purpose is to enable state and
+              side-effect management in functional components. Gone are the days
+              when only class components had all the fun with state management.
+          - text: With hooks, you can now stay functional and also manage your component
+              state without writing a class component. It's like giving
+              functional components a new superpower! Alongside state
+              management, hooks allow us to handle side effects, such as
+              fetching data, with the elegance of a functional approach.
+          - text: " Intrigued? Good, because hooks epitomize React’s philosophy of
+              simplicity and reusability. Want to read more? Check out [React
+              Hooks](https://reactjs.org/docs/hooks-intro.html)."
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: ":thumbsup: Ready to dive into the hooky wonders? Awesome, let's press on.
+                Click 'Next' when you're ready for more!"
+      - actionId: finish_step
