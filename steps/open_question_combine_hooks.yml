@@ -1,0 +1,105 @@
+id: open_question_combine_hooks
+learningObjectives:
+  - Combine useState and useEffect in a practical scenario.
+hints:
+  - Imagine a data fetching scenario where you need to keep track of loading
+    status.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Last question and it's a creative one! Describe a scenario or example
+              where you might use useState and useEffect together to solve a
+              common react challenge.
+trigger:
+  type: user_message
+  params:
+    person: lucca
+  flowNode:
+    do:
+      - actionId: parse_user_response
+        name: user_answer
+        params:
+          prompt: "
+
+            \    Please evaluate the user's answer in relation to
+            the expected answer: Example scenario: Fetching data from an API.
+            useState to hold the data and loading state, useEffect to trigger
+            the data fetch when the component mounts..
+
+            \    # Assessment Criteria
+
+            \    - Determine if the user's response demonstrates a
+            clear understanding of the key concepts and ideas presented in the
+            expected answer.
+
+            \    - Consider synonyms, paraphrasing, and different
+            phrasing that convey the same meaning.
+
+            \    - Be flexible and focus on the essence of the
+            answer rather than exact wording.
+
+            \ \ 
+
+            \    # Response Guidelines:
+
+            \    - If the user's answer is correct or shows
+            sufficient understanding, return 'correct: true'.
+
+            \      - Provide a positive and affirming message,
+            congratulating them and reinforcing their understanding.
+
+            \    - If the user's answer is incorrect or incomplete,
+            return 'correct: false'.
+
+            \      - Gently explain why the answer is not fully
+            correct or what may be missing.
+
+            \      - Encourage them to try again, being empathetic
+            and supportive.
+
+            \ \ 
+
+            \    # Tone and Style:
+
+            \    - Use friendly and encouraging language.
+
+            \    - Be empathetic to the user's learning process.
+
+            \    - Focus on helping the user learn and understand
+            the material.
+
+            \  "
+          schema:
+            correct: boolean
+            reply: string
+    if:
+      conditions:
+        - conditionId: is_truthy
+          params:
+            value: ${outputs.user_answer.value.correct}
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: ${outputs.user_answer.value.reply}
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: Congrats! You've conquered React Hooks & State Management! I've no doubt
+                    you're ready to impress your code compatriots with your
+                    newfound prowess. Remember, my inbox is always open for more
+                    techie chatter or questing desires.
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: ${outputs.user_answer.value.reply}
