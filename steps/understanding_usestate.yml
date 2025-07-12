@@ -1,0 +1,37 @@
+id: understanding_usestate
+learningObjectives:
+  - Learn how to utilize the useState hook.
+hints:
+  - More on useState can be found
+    [here](https://reactjs.org/docs/hooks-state.html).
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Let's get cozy with the useState hook. UseState is one of those hooks
+              you'll find yourself reaching for, like a comfortable old hoodie
+              when it gets too chilly in your code.
+          - text: "It allows you to add state to your functional components using a simple
+              API. Picture this: const [count, setCount] = useState(0). This
+              line sets up a state variable called 'count' with an initial value
+              of 0 and provides a function 'setCount' to update it."
+          - text: Why use this instead of the ol' this.state? Well, it is more declarative
+              and concise, making your code more readable and modular. Check out
+              more details on [Using the State
+              Hook](https://reactjs.org/docs/hooks-state.html).
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: bot_message
+        params:
+          person: lucca
+          messages:
+            - text: Got it? Once the state of understanding is high, summon the 'Next' button
+                for our next step!
+      - actionId: finish_step
