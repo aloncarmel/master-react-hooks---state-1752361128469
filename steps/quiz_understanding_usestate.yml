@@ -1,0 +1,59 @@
+id: quiz_understanding_usestate
+learningObjectives:
+  - Assess understanding of useState hook functionality.
+hints:
+  - The return value of useState applies a pattern in JavaScript often used for
+    destructuring arrays.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Time for a quick pop quiz to keep us on our toes! What does the useState
+              hook return?
+    - actionId: quiz_message
+      name: quiz
+      params:
+        person: lucca
+        options:
+          - An array with the state and a setter function.
+          - A single value representing the current state.
+          - An object with state key-value pairs.
+trigger:
+  type: chat_form_submitted
+  flowNode:
+    switch:
+      key: ${formSubmission}
+      cases:
+        A:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: Correctamundo! useState returns an array containing the current state and
+                      a function to update it. Nicely done!
+            - actionId: finish_step
+        B:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: Not quite, though you're close. Remember, useState provides both the state
+                      and a way to update it. Give it another whirl!
+            - actionId: replay_action
+              params:
+                actionName: quiz
+        C:
+          do:
+            - actionId: bot_message
+              params:
+                person: lucca
+                messages:
+                  - text: Nope! useState doesn’t return an object, it's all about that array. Try
+                      again, please!
+            - actionId: replay_action
+              params:
+                actionName: quiz
