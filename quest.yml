@@ -1,0 +1,30 @@
+id: react_hooks_state_mgmt
+title: Master React Hooks & State
+subtitle: "Harness hooks: Simplify state in React."
+description: >-
+  Welcome to the thrilling world of React hooks and state management! In this
+  quest, we'll journey through the core concepts of hooks in React, a feature
+  that brought about a paradigm shift in the way we write React components.
+
+
+  We'll start by exploring the basics of hooks and why they are a powerful addition to functional components. Next, we'll dive deep into the most commonly used hooks such as useState, useEffect, and useContext. You'll learn not only how they work but more importantly, how to wield them like a pro to manage state efficiently and effectively in your applications.
+
+
+  By the end of this quest, you’ll not only understand the mechanics behind hooks but also appreciate the benefits they bring in terms of cleaner, more concise, and maintainable code. Let's turn the fear of hooks into full-fledged mastery, enhancing your skills as a modern React developer.
+level: intermediate
+duration: 0.75
+skills:
+  - react
+  - state management
+  - javascript
+  - functional programming
+steps:
+  - intro_to_hooks
+  - understanding_usestate
+  - exploring_useeffect
+  - quiz_understanding_usestate
+  - quiz_useeffect_purpose
+  - open_question_hooks_advantage
+  - open_question_combine_hooks
+type: MODULE
+repository: null
